@@ -82,6 +82,8 @@ When you go `mvn clean package` this will package up a *jar* with the manifest r
 Spring boot loader contains the necessary class loader to combine the jars contained in the *lib* path
 along with the normal *.class* files etc.
 
+#### the tile effectively brings in ...
+
 ```xml
 
   <!-- defaults, override in your project pom if needed -->
