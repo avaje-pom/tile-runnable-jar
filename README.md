@@ -6,8 +6,24 @@ There is no need to use Spring DI etc we just need a `main method`.
 
 ## Example use
 
-### main-class property
-In your project pom specify the class with the `main` method.
+### 1. Main method
+You need a class with a `main` method.
+
+```java
+package org.example.main;
+
+public class Hello {
+
+  public static void main(String[] args) {
+
+    System.out.println("Hello world");
+  }
+}
+```
+
+
+### 2. main-class property
+In your project pom add a `main-class` property that specifies the class with the `main` method.
 
 ```xml
   <properties>
@@ -15,9 +31,8 @@ In your project pom specify the class with the `main` method.
   </properties>
 ```
 
-### Add runnable-jar tile
-
-In your project pom under build / plugins add the tiles-maven-plugin with the `runnable-jar` tile.
+### 3. Add runnable-jar tile
+In your project pom under build / plugins add the tiles-maven-plugin with the `runnable-jar` tile like below.
 
 Note that you will may often add multiple tiles as desired/needed (like java-compile, dependency-tree etc)
 
@@ -43,6 +58,19 @@ Note that you will may often add multiple tiles as desired/needed (like java-com
         </configuration>
       </plugin>
 
+```
+
+### 4. mvn clean package
+Package up the project as a runnable jar. Any dependencies are embedded into the jar (under a *lib* path).
+
+```sh
+mvn clean package
+```
+
+### 5. run your jar
+Uses java -jar to run the application.
+```sh
+java -jar target/myapp-1.1-SNAPSHOT.jar
 ```
 
 ## What it does
